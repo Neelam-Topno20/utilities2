@@ -1,0 +1,13 @@
+value="${fn:replace(fn:escapeXml(siteChallengeDO.title), '&amp;','&')}"
+
+value="${siteChallengeDO.title}"
+
+result= result.replace('&amp;','&')
+
+Fix:
+
+-->sp-552
+	spigit.common.js line 505 
+	-->var result = dummy.innerText
+
+

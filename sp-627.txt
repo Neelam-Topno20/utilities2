@@ -1,0 +1,160 @@
+
+ 
+////First CAse/////////////////////////////////////////////////
+ 
+ 
+ ////problem query
+ 
+ SELECT DISTINCT U78180.userid ,  ua_188.value as 'Skills'
+ FROM Users U78180 
+ INNER JOIN UserProfiles UP ON U78180.userid = UP.userid 
+LEFT JOIN UserAttributesMap ua_188  ON U78180.userid =  ua_188.userid and  ua_188.id = 188
+ WHERE  (  (  ( ( ua_188.value = ? ) )  )  AND ( U78180.userid = ? ) ) LIMIT 1 OFFSET 0
+ 
+ /////////////////Condition Query/////////////////
+SELECT UA.id, UA.name, SUAM.value, SUAM.expressionAttributeId, SUAM.term,
+ SUAM.comparisonOperator FROM SiteUserAttributesMap SUAM, UserAttributes UA 
+ WHERE SUAM.id = UA.id AND siteid = 45
+ 
+ -----------------------------------------------------------------------
+ 
+ 
+ 
+ //////Second CAse/////////////////////////////////////////////////
+ 
+ SELECT distinct U.userid, U.username as 'User name', UP.firstname as 'First name', UP.lastname as 'Last name', UP.email as 'Email' 
+ FROM Users U 
+INNER JOIN UserProfiles UP ON U.userid = UP.userid 
+LEFT JOIN UserAttributesMap ua_188  ON U.userid =  ua_188.userid and  ua_188.id = 188
+ WHERE  ( exists( select 1 from UserAttributeValues uav where uav.id =  ua_188.value and uav.value  = ?) ) 
+ ORDER BY U.username LIMIT 20 OFFSET 0
+ 
+
+ 
+ //////////////////////////////////////////
+ SELECT DISTINCT U95595.userid ,  ua_188.value as 'Skills'
+ FROM Users U95595 
+LEFT JOIN UserAttributesMap ua_188  ON U95595.userid =  ua_188.userid and  ua_188.id = 188
+ INNER JOIN SiteUserAttributesMap SUAM ON ua_188.id = SUAM.id 
+ WHERE  (  (  ( ( SUAM.value = "rock climbing" ) )  )  and (U95595.userid = 3) ) 
+ LIMIT 1 OFFSET 0
+ 
+  
+ 
+ ////////////////////query while adding skill in challenge/////////////
+ select count(*) as count, ua.name from UserAttributeValues
+ uav, UserAttributes ua  where attrid =188 and uav.attrid = ua.id
+ 
+ SELECT 1 FROM UserAttributes where id = 188 and controlled_input = 1
+ 
+ INSERT INTO %s(attrid,value)  values(?,?)", tbl_UserAttributeValues
+ 
+ 
+ ////////////insert query
+ INSERT INTO UserAttributesMap (value, userid, modified, id)
+ VALUES(SELECT case when UA.controlled_input = 0 THEN UAM.value ELSE (SELECT value FROM UserAttributeValues WHERE id = UAM.value) END AS value from , ?,  unix_timestamp(),(SELECT id FROM UserAttributes WHERE parameter = ? LIMIT 1));
+ 
+ DELETE FROM UserAttributesMap WHERE userid = :userid AND id in (:ids)
+ 
+ 
+ SELECT value FROM userattributeValues WHERE id = 6 LIMIT 1
+ 
+ 
+ 
+ /////previous query in UsersSQL
+ public static final String SQL_INSERT_USER_ATTRIBUTE_BY_PARAMETER =
+      "INSERT INTO " + SQLTableNames.tbl_UserAttributesMap + 
+	  "(value, userid, modified, id) VALUES(?, ?, 
+	  unix_timestamp(),(SELECT id FROM " + SQLTableNames.tbl_UserAttributes + " WHERE parameter = ? LIMIT 1))";
+
+////////modified
+ 
+  public static final String SQL_INSERT_USER_ATTRIBUTE_BY_PARAMETER =
+      "INSERT INTO " + SQLTableNames.tbl_UserAttributesMap + "(value, userid, modified, id) VALUES(, ?,  unix_timestamp(),(SELECT id FROM " + SQLTableNames.tbl_UserAttributes + " WHERE parameter = ? LIMIT 1))";
+
+ INSERT INTO UserAttributesMap(value, userid, modified, id) VALUES(?, ?,  unix_timestamp(),(SELECT id FROM UserAttributes WHERE name = ? LIMIT 1))
+ 
+
+ 
+ SELECT id from UserAttributes where name = tags;
+ 
+  SELECT U.disable, P.userid, U.username, U.avatar, P.firstname, P.lastname, P.bio, U.joindate, (SELECT max(lastaccess) from UserStats WHERE userid = U.userid) lastaccess FROM 
+           UserProfiles  P JOIN Users  U ON P.userid = U.userid AND U.userid = 5;
+		   
+  SELECT UAM.id, case when UA.controlled_input = 0 THEN UAM.value ELSE (SELECT value FROM UserAttributeValues WHERE id = UAM.value) END AS value from 
+      UserAttributesMap UAM,UserAttributes  UA where userid = 5;
+
+(SELECT value FROM "+SQLTableNames.tbl_UserAttributeValues+" WHERE id = ? LIMIT 1 )
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+SELECT *
+ FROM Users U95595 
+ LEFT JOIN UserAttributesMap ua_188  ON U95595.userid =  ua_188.userid and  ua_188.id = 188
+ INNER JOIN UserAttributeValues uav ON ua_188.value = uav.id
+ WHERE  (  (  ( ( uav.value = "skill2"  ) )  )  and (U95595.userid = 3) ) 
+ 
+ 
+ ---------------------------------------------------------------------------------------------------------------------------------------
+ 
+ for users with skills and interests both
+ 
+ SELECT DISTINCT U82636.userid ,  ua_188.value as 'Skills',  ua_189.value as 'Interests'
+ FROM Users U82636 
+ LEFT JOIN UserAttributesMap ua_188  ON U82636.userid =  ua_188.userid and  ua_188.id = 188
+ INNER JOIN UserAttributeValues UAV73048 ON  ua_188.value = UAV73048.id
+ LEFT JOIN UserAttributesMap ua_189  ON U82636.userid =  ua_189.userid and  ua_189.id = 189
+ INNER JOIN UserAttributeValues UAV73048 ON  ua_189.value = UAV73048.id
+ INNER JOIN UserProfiles UP ON U82636.userid = UP.userid 
+ WHERE  (  (  ( (UAV73048.value = ?) and (UAV73048.value = ?) )  )  and (U82636.userid = ?) ) 
+ LIMIT 1 OFFSET 0
+ 
+ ------------------------------------------------------------------------------------------------------------------------------
+ 
+ preview users fro multiple skils and interests
+ 
+ SELECT distinct U.userid, U.username as 'User name', UP.firstname as 'First name', UP.lastname as 'Last name', UP.email as 'Email' 
+ FROM Users U 
+INNER JOIN UserProfiles UP ON U.userid = UP.userid 
+LEFT JOIN UserAttributesMap ua_189  ON U.userid =  ua_189.userid and  ua_189.id = 189
+ WHERE  ( exists( select 1 from UserAttributeValues uav where uav.id =  ua_189.value and uav.value  = ?) 
+ and exists( select 1 from UserAttributeValues uav where uav.id =  ua_189.value and uav.value  = ?) ) 
+ ORDER BY U.username LIMIT 20 OFFSET 0
+ 
+ -----------
+ 
+ SELECT DISTINCT U98618.userid ,  ua_189.value as 'Interests',  ua_189.value as 'Interests'
+ FROM Users U98618 
+ LEFT JOIN UserAttributesMap ua_189  ON U98618.userid =  ua_189.userid and  ua_189.id = 189
+ INNER JOIN UserAttributeValues UAV88338 ON  ua_189.value = UAV88338.id
+ INNER JOIN UserAttributeValues UAV29613 ON  ua_189.value = UAV29613.id
+ INNER JOIN UserProfiles UP ON U98618.userid = UP.userid 
+ WHERE  (  (  ( (UAV88338.value = ?) and (UAV29613.value = ?) )  )  and (U98618.userid = ?) ) 
+ LIMIT 1 OFFSET 0
+ 
+ //////////////// AND Operation /////////////////////////////////
+ 
+ SELECT DISTINCT UAM.userid FROM UserAttributesMap UAM 
+JOIN UserAttributeValues UAV ON  UAM.value = UAV.id WHERE
+  UAV.value IN ('interest1','interest6')  GROUP BY UAM.userid HAVING count(UAM.userid)=2
+  
+ /////////////////// OR Operation ////////////////////////////////
+ 
+ SELECT DISTINCT UAM.userid FROM UserAttributesMap UAM 
+JOIN UserAttributeValues UAV ON  UAM.value = UAV.id WHERE
+  UAV.value IN ('interest2','interest7')  
+  
+  
+  
+  
+
+ 
+ 
+ 
+ 
+ 

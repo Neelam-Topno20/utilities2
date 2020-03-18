@@ -1,0 +1,9 @@
+
+//connecting to a user in postgresql
+psql -d visatracker -U vat_user
+
+//creating a new user
+psql -U postgres -c "CREATE ROLE vat_usr LOGIN NOSUPERUSER INHERIT CREATEDB CREATEROLE;" visatracker
+
+//to view all databases
+\dt 

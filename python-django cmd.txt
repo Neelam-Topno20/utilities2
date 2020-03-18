@@ -1,0 +1,52 @@
+
+//Starting a virtual env
+
+	pip3 install virtualenvwrapper-win
+
+	mkvirtualenv my_django_environment
+
+	django-admin --version
+
+//Starting a project in django
+
+	django-admin startproject todo_project
+
+//installing a django framework in django
+
+	pip3 install djangorestframework==3.10.3
+	
+//install postgresql
+	pip install psycopg2
+
+//Starting a new app
+
+	py manage.py startapp main
+
+//Starting the server
+	py manage.py runserver
+
+//Setting up and persisting model class 
+	python manage.py makemigrations
+
+	py manage.py migrate
+
+//Starting python shell
+	py manage.py shell
+
+//Creating superuser(admin)
+	py manage.py createsuperuser
+
+//installing tinymce
+	pip3 install django-tinymce4-lite
+
+//installing dependencies
+	pip3 install -r requirements.txt
+
+//create virtual env
+virtualenv env
+
+//activate virtual env
+F:\PyProjects\visa_application_tracker\VISATrackingWebApp\env\Scripts\activate
+
+
+. my_django_environment/bin/activate

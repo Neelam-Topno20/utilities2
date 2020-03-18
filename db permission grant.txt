@@ -1,0 +1,4 @@
+INSERT INTO mysql.user (Host, User, Password) VALUES ('%', 'root', password('Planview1*'));
+GRANT ALL ON *.* TO 'root'@'%' WITH GRANT OPTION;
+
+nodeode.exe /s /x /b"C:\Program Files\NodeJs" /v"/qn"

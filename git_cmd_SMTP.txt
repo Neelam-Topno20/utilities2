@@ -1,0 +1,114 @@
+GIT COMMANDS
+
+1. Initilizing repo
+
+	git init 
+
+	git config --global user.email "neilgp6555@gmail.com"
+
+	git config --global user.name "Neelam-Topno20"
+
+
+	git remote set-url origin https://github.com/Neelam-Topno20/DemoJSessionId.git
+
+
+	git remote add origin https://github.com/Neelam-Topno20/kafka.git
+
+	git remote -v
+
+2. Pushing changes to remote
+
+	git push origin master
+
+	git diff HEAD
+
+3. Staging unstaged files
+
+	git status
+
+	git add -A stages all changes
+	git add . stages new files and modifications, without deletions
+
+	git add -u stages modifications and deletions, without new files
+
+	git diff --cached
+
+4. Commiting changes to local
+
+	git commit -m "added help file"
+
+5. Creating and pushing a new branch
+
+	git checkout -b branch_name
+
+	git push -u origin feature_eclipse_link
+ 
+ 6. Stashing the changes from a repo for future
+ 
+	git stash save
+	git stash list //view the list of stashes
+	git stash pop  // applying the most recent stashed changes and removing it from the stash list
+	git stash apply // applying the most recent stashed changes and retaining it in the stash list
+
+7. Modifying a file and viewing the changes
+
+	# make a change
+	echo branch2 content >> file.txt
+
+	#view file
+	cat file.txt
+
+8. perform a checkout of all files to fetch files as we left them in
+in the original branch
+	$ git checkout .
+
+9. view all the branches in local
+
+	$ git branch
+
+10. Deleting a branch in remote
+
+	git push --delete origin branch_name
+
+11. fetch all the changes in local
+
+	git fetch origin --prune 
+	git checkout -b feature_embedded_tomcat
+
+	git push origin feature_embedded_tomcat
+
+12. Deleting staged & unstaged files
+
+	# Print out the list of files which will be removed (dry run)
+	git clean -n
+
+	# Delete the files from the repository
+	git clean -f
+	
+13. To see the commits of a branch except that of master
+	git log feature_update_user --not master
+	
+14. To see the branches present in remote
+	git branch -r
+	
+15. To delete all branches in local except master
+	alias gbr="git branch | grep -v "master" | xargs git branch -D"
+
+16. unstaged staged files
+	
+	git reset HEAD -- path/to/file
+
+    unstaged all the files
+
+	git reset HEAD -- .
+
+17. Deleting unstaged changes
+
+	git checkout -- .
+
+	
+
+
+//Setting up SMTP
+java -jar C:\Users\NeelamT\Downloads\fakeSMTP-2.0.jar -s -b -p 2525 -a 127.0.0.1 -o F:\MailFakes
+
